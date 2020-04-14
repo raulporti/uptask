@@ -2,6 +2,14 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const bodyPaser = require('body-parser');
+
+//Crear la conexion a la base de datos
+const db = require('./config/db');
+//Importar el model
+require('./models/Proyectos');
+db.sync()
+    .then(()=>console.log('Conectado al servidor'))
+    .catch(error => console.log(error))
 //Crear una app de express
 const app = express();
 //Donde cargar los archivos
