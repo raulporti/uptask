@@ -2,7 +2,8 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const bodyPaser = require('body-parser');
-
+//Helpers con algunas funciones
+const helpers = require('./helpers');
 //Crear la conexion a la base de datos
 const db = require('./config/db');
 //Importar el model
@@ -14,6 +15,12 @@ db.sync()
 const app = express();
 //Donde cargar los archivos
 app.use(express.static('public'));
+
+//Pasar var dump a la aplicacion
+app.use((req, res, next)=>{
+    res.locals.vardump = helpers.vardump;
+    next();
+});
 //Habilitar PUG
 app.set('view engine', 'pug');
 
