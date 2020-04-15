@@ -7,7 +7,11 @@ const proyectoController = require ('../controllers/proyectosController');
 module.exports = function(){
     router.get('/', proyectoController.proyectosHome);
     router.get('/nuevo-proyecto', proyectoController.formularioProyecto);
-    router.post('/nuevo-proyecto',
-   proyectoController.nuevoProyecto);
+    router.post('/nuevo-proyecto',proyectoController.nuevoProyecto);
+    router.post('/nuevo-proyecto/:id',proyectoController.actualizarProyecto);
+
+    //Litar proyecto
+    router.get('/proyectos/:url', proyectoController.proyectoPorUrl);
+    router.get('/proyecto/editar/:id', proyectoController.formularioEditar);
     return router;
 }
