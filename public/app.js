@@ -1,2 +1,2 @@
-import tareas from './js/modulos/projectos';
+import proyectos from './js/modulos/projectos';
 
