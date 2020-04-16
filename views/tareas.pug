@@ -9,8 +9,20 @@ block contenido
                 input.nombre-tarea(type="text" name="tarea" placeholder="Nombre Tarea")
             .campo-enviar
                 input.boton.nueva-tarea(type="submit" value="Agregar")    
-        //TODO- Listado de Pendientes
-
+        .listado-pendientes
+            ul
+              if tareas.length
+                each tarea in tareas
+                    li.tarea
+                        p=tarea.tarea
+                        .acciones
+                            if tarea.estado
+                                i.far.fa-check-circle.completo
+                            else
+                                i.far.fa-check-circle
+                            i.fas.fa-trash
+              else
+                p no hay tareas en este proyecto                
         //Acciones que se pueden realizar
         .contenedor-acciones
             a(href=`/proyecto/editar/${proyecto.id}` class="boton") Editar Proyecto
