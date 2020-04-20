@@ -5,6 +5,7 @@ const bodyPaser = require('body-parser');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser')
+const passport = require('./config/passport');
 //Helpers con algunas funciones
 const helpers = require('./helpers');
 //Crear la conexion a la base de datos
@@ -40,6 +41,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use((req, res, next)=>{
     res.locals.vardump = helpers.vardump;
     res.locals.mensajes = req.flash();
